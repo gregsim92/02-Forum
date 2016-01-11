@@ -20,5 +20,10 @@ router.get('/search', function(req,res,next){
 	res.render('./pages/search', {title:'search'});
 });
 
+router.get('/logout', function(req,res,next){
+	//clear cookies/session
+	res.redirect('/')
+})
+
 
 module.exports = router;
