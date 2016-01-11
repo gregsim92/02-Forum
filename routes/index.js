@@ -23,7 +23,6 @@ router.get('/search', function(req,res,next){
 router.get('/logout', function(req,res,next){
 	//clear cookies/session
 	res.redirect('/')
-})
-
+});
 
 module.exports = router;

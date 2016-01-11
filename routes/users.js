@@ -10,8 +10,18 @@ router.get('/:userid', function(req,res,next){
 	res.redirect('/:userid/profile')
 });
 
-router.get('/:userid/profile'), function(req,res,next){
-	res.render('./pages/user')
-}
+router.get('/:userid/profile', function(req,res,next){
+	res.render('./pages/user');
+});
+
+router.get('/:userid/profile/edit', function(req,res,next){
+	res.render('./pages/user');
+});
+
+router.get('/:userid/profile/delete', function(req,res,next){
+	res.redirect('/');
+});
+
+//GET for deleting the user account is located on the index routes page
 
 module.exports = router;
