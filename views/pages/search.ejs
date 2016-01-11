@@ -4,7 +4,12 @@
 		<% include ../partials/head %>
 	</head>
 	<body>
-		<h1><%= title %></h1>
-		<p>Welcome to <%= title %></p>
+		<% include ../partials/header %>
+		<div class="container-fluid">
+			<div class="landing">
+				<h1><%= title %></h1>
+				<p>Welcome to <%= title %></p>
+			</div>
+		</div>
 	</body>
 </html>
