@@ -6,7 +6,7 @@
 	<body>
 		<% include ../partials/header %>
 		<div class="container-fluid">
-			<form action="POST" id="signupForm">
+			<form method="POST" action="/users/" id="signupForm">
 				<label>Username:</label><br>
 				<input type="text" id="username" autocomplete="off">
 				<br>
@@ -19,7 +19,7 @@
 				<label>E-mail:</label><br>
 				<input type="email" id="email" autocomplete="off">
 				<br><br>
-				<input type="submit" id="signupSubmit">
+				<input type="submit" value="Create" id="signupSubmit">
 			</form>
 		</div>
 	</body>
