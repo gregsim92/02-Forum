@@ -6,9 +6,9 @@
 	<body>
 		<% include ../partials/header %>
 		<div class="container-fluid">
-			<form method="POST" action="/users/" id="signupForm">
+			<form method="POST" action="/signup" id="signupForm">
 				<label>Username:</label><br>
-				<input type="text" id="username" autocomplete="off">
+				<input type="text" id="username" autocomplete="off" autofocus maxlength="18">
 				<br>
 				<label>Password:</label><br>
 				<input type="password" id="password" autocomplete="off">
@@ -19,7 +19,7 @@
 				<label>E-mail:</label><br>
 				<input type="email" id="email" autocomplete="off">
 				<br><br>
-				<input type="submit" value="Create" id="signupSubmit">
+				<input type="submit" value="Create" class="submit">
 			</form>
 		</div>
 	</body>

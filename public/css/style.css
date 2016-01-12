@@ -14,19 +14,48 @@
 		padding: 5px;
     }
     #signupForm {
+    	height: 400px;
     	font-size: 1.5rem;
     	width: 60%;
     	margin-left: 20%;
     	background-color: #eef3f0;
 		border-radius: 5px;
-		padding: 5px;
-
+		padding: 10px;
     }
+
+    #signupForm > label {
+    	margin-top: 20px;
+    	margin-bottom: 5px;
+    	font-size: 18px;
+    }
+
     form > input {
     	width: 100%;
     }
-    #signupSubmit {
+    .submit {
     	width: 30%;
+    	height: 45px;
     	margin-left: 35%;
     	margin-right: auto;
+    	background-color: #65bb45;
+    	border: 1px solid #4b8c33;
+    	border-radius: 5px;
+    	color: white
+    }
+
+    #loginForm {
+        height: 400px;
+        font-size: 1.5rem;
+        width: 60%;
+        margin-left: 20%;
+        background-color: #eef3f0;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    #loginBanner {
+        margin-left: 10%;
+        height: 200px;
+        width: 80%;
+        text-align: center;
     }
