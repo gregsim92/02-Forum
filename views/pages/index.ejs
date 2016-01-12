@@ -7,26 +7,41 @@
 		<% include ../partials/header %>
 		<div class="container-fluid">
 			<div class="landing">
-				<div id="community" class="category">
+				<div class="category">
 					<h1>Community Announcements</h1>
-					<% categories.forEach(function(categories){ %>
-					<div><h3><%= categories.sub_name; %></h3></div>
-					<% }); %>
+					<% subforums.forEach(function(subforums){ %>
+					<%if (subforums.category == 1) {%>
+					<div>
+						<h5><a href="/forums/<%= subforums.sub_name%>"><%= subforums.sub_name; %></a></h5>
+					</div>
+					<% }}); %>
 				</div>
-				<div class="">
+				<div class="category">
 					<h1>General</h1>
-					<div><a href="#">Recruiting</a></div>
-					<div><a href="#">Recruiting</a></div>
+					<% subforums.forEach(function(subforums){ %>
+					<%if (subforums.category == 2) {%>
+					<div>
+						<h5><a href="/forums/<%=subforums.sub_name%>"><%= subforums.sub_name; %></a></h5>
+					</div>
+					<% }}); %>
 				</div>
-				<div class="">
+				<div class="category">
 					<h1>Gaming</h1>
-					<div><a href="#">Recruiting</a></div>
-					<div><a href="#">Recruiting</a></div>
+					<% subforums.forEach(function(subforums){ %>
+					<%if (subforums.category == 3) {%>
+					<div>
+						<h5><a href="/forums/<%=subforums.sub_name%>"><%= subforums.sub_name; %></a></h5>
+					</div>
+					<% }}); %>
 				</div>
-				<div class="">
+				<div class="category">
 					<h1>Administrative</h1>
-					<div><a href="#">Recruiting</a></div>
-					<div><a href="#">Recruiting</a></div>
+					<% subforums.forEach(function(subforums){ %>
+					<%if (subforums.category == 4) {%>
+					<div>
+						<h5><a href="/forums/<%=subforums.sub_name%>"><%= subforums.sub_name; %></a></h5>
+					</div>
+					<% }}); %>
 				</div>
 			</div>
 		</div>
