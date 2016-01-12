@@ -7,8 +7,27 @@
 		<% include ../partials/header %>
 		<div class="container-fluid">
 			<div class="landing">
-				<h1><%= title %></h1>
-				<p>Welcome to <%= title %></p>
+				<div id="community" class="category">
+					<h1>Community Announcements</h1>
+					<% subs.forEach(function(subs){ %>
+					<div><h3><%= subs.sub_name; %></h3></div>
+					<% }); %>
+				</div>
+				<div class="">
+					<h1>General</h1>
+					<div><a href="#">Recruiting</a></div>
+					<div><a href="#">Recruiting</a></div>
+				</div>
+				<div class="">
+					<h1>Gaming</h1>
+					<div><a href="#">Recruiting</a></div>
+					<div><a href="#">Recruiting</a></div>
+				</div>
+				<div class="">
+					<h1>Administrative</h1>
+					<div><a href="#">Recruiting</a></div>
+					<div><a href="#">Recruiting</a></div>
+				</div>
 			</div>
 		</div>
 	</body>
