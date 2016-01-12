@@ -4,7 +4,9 @@ var knex = require('../db/knex');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('./pages/index', { title: 'Homepage' });
+  knex('subforums').then(function(rows){
+  	res.render('./pages/index', {subforums: rows});
+  })
 });
 
 router.get('/login', function(req,res,next){
