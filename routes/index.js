@@ -18,7 +18,12 @@ router.get('/signup', function(req,res,next){
 
 router.post('/signup', function(req,res,next){
 	console.log();
-	knex('users').insert({username: req.body.username, password:req.body.password}).then(function(){
+	knex('users').insert(
+		{username: req.body.username, 
+		password:req.body.password,
+	 	email:req.body.email,
+	 	is_mod: false})
+	.then(function(){
 		res.redirect('/');
 	})
 });
