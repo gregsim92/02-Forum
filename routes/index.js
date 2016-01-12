@@ -4,9 +4,9 @@ var knex = require('../db/knex');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  knex('subforums').then(function(rows){
-  	res.render('./pages/index', {subs: rows});
-  });
+  knex('forums').where({category:1}).then(function(rows){
+  	res.render('./pages/index', {categories: rows});
+  })
 });
 
 router.get('/login', function(req,res,next){
