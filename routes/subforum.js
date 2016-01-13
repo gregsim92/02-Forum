@@ -12,7 +12,7 @@ router.get('/:subforum/new', function(req,res,next) {
 
 router.get('/:subforum', function(req,res,next){
 	knex('threads').then(function(threads){
-  		res.render('./pages/sub', {threads: threads, name: req.params.subforum});
+  		res.render('./pages/sub', {threads: threads, name: req.params.subforum, sub_id: req});
 	});
 });
 

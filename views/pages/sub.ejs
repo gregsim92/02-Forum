@@ -15,11 +15,13 @@
 						<a href="./<%= name%>/new"><button class="newPost"> New Post </button></a>
 					</div>
 				</div>
-				<% threads.forEach(function(threads){ %>
-				<div class="landingItem">
-					<p><a href="./<%= name%>/<%= threads.thread_name%>"><%= threads.thread_name; %></a></p>
-				</div>
-				<% }); %>
+				<% console.log(name) %>
+				<% threads.forEach(function(threads){ %> 
+					<% if ("/" + threads.sub_id == sub_id) { %>
+						<div class="landingItem">
+							<p><a href="./<%= name%>/<%= threads.id%>"><%= threads.thread_name; %></a></p>
+						</div>
+				<% }}); %>
 			</div>
 		</div>
 	</body>
