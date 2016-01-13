@@ -10,14 +10,18 @@ router.get('/:subforum/new', function(req,res,next) {
 	res.render('./pages/create');
 });
 
+router.post('/:')
+
 router.get('/:subforum', function(req,res,next){
 	knex('threads').then(function(threads){
-  		res.render('./pages/sub', {threads: threads, name: req.params.subforum, sub_id: req});
+  		res.render('./pages/sub', {threads: threads, sub_id: req.params.subforum});
 	});
 });
 
 router.get('/:subforum/:thread', function(req,res,next){
-	res.render('./pages/thread');
+	knex('posts').then(function(threads){
+		res.render('./pages/thread.ejs', {threads: threads, name: req.params.thread});
+	});
 });
 
 module.exports = router;
