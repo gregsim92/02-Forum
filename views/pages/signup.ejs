@@ -6,20 +6,25 @@
 	<body>
 		<% include ../partials/header %>
 		<div class="container-fluid">
+
+			<% if (err){ %> 
+				<p> <%= err %> </p>
+			<% } %>
+
 			<form method="POST" action="/signup" id="signupForm">
 				<label>Username:</label><br>
-				<input type="text" name="username" id="username" autocomplete="off" autofocus maxlength="18">
+				<input type="text" name="username" id="username" autocomplete="off" autofocus maxlength="18" required>
 				<br>
 				<label>Password:</label><br>
-				<input type="password" name = "password" id="password" autocomplete="off" >
+				<input type="password" name = "password" id="password" autocomplete="off" required>
 				<br>
 				<label>Confirm Password:</label><br>
-				<input type="password" id="passwordConfirm" autocomplete="off">
+				<input type="password" id="passwordConfirm" autocomplete="off" required>
 				<br>
 				<label>E-mail:</label><br>
 				<input type="email" name= "email" id="email" autocomplete="off">
 				<br><br>
-				<input type="submit" value="Create" class="submit">
+				<input type="submit" value="Create" class="submit" required>
 			</form>
 		</div>
 	</body>

@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/signup', function(req,res,next){
-	res.render('./pages/signup', {title:'Sign Up'});
+	res.render('./pages/signup', {title:'Sign Up', err: "Username already taken"});
 });
 
 router.post('/signup', function(req,res,next){
@@ -42,7 +42,10 @@ router.post('/signup', function(req,res,next){
 			   });
 
 				res.redirect('/');
-			} // if statement
+			} else if (user){
+				res.status(409);
+				res.render('/signup');
+			}// if statement
 		})
 	
 });
