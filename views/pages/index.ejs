@@ -11,8 +11,8 @@
 					<h1>Community Announcements</h1>
 					<% subforums.forEach(function(subforums){ %>
 					<%if (subforums.category == 1) {%>
-					<div>
-						<h5><a href="/forums/<%= subforums.sub_name%>"><%= subforums.sub_name; %></a></h5>
+					<div class="landingItem">
+						<p><a href="/forums/<%= subforums.sub_name%>"><%= subforums.sub_name; %></a></p>
 					</div>
 					<% }}); %>
 				</div>
@@ -20,8 +20,8 @@
 					<h1>General</h1>
 					<% subforums.forEach(function(subforums){ %>
 					<%if (subforums.category == 2) {%>
-					<div>
-						<h5><a href="/forums/<%=subforums.sub_name%>"><%= subforums.sub_name; %></a></h5>
+					<div class="landingItem">
+						<p><a href="/forums/<%=subforums.sub_name%>"><%= subforums.sub_name; %></a></p>
 					</div>
 					<% }}); %>
 				</div>
@@ -29,8 +29,8 @@
 					<h1>Gaming</h1>
 					<% subforums.forEach(function(subforums){ %>
 					<%if (subforums.category == 3) {%>
-					<div>
-						<h5><a href="/forums/<%=subforums.sub_name%>"><%= subforums.sub_name; %></a></h5>
+					<div class="landingItem">
+						<p><a href="/forums/<%=subforums.sub_name%>"><%= subforums.sub_name; %></a></p>
 					</div>
 					<% }}); %>
 				</div>
@@ -38,8 +38,8 @@
 					<h1>Administrative</h1>
 					<% subforums.forEach(function(subforums){ %>
 					<%if (subforums.category == 4) {%>
-					<div>
-						<h5><a href="/forums/<%=subforums.sub_name%>"><%= subforums.sub_name; %></a></h5>
+					<div class="landingItem">
+						<p><a href="/forums/<%=subforums.sub_name%>"><%= subforums.sub_name; %></a></p>
 					</div>
 					<% }}); %>
 				</div>
