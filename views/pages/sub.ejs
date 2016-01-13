@@ -7,11 +7,17 @@
 		<% include ../partials/header %>
 		<div class="container-fluid">
 			<div class="landing">
-				<h2><%= name%></h2>
-				<button href="./new">New Post</button>
+				<div class="navbar navbar-default">
+					<div>
+						<h2 class="navbar-header"><%= name%></h2>
+					</div>
+					<div class="nav navbar-nav navbar-right">
+						<a href="./<%= name%>/new"><button class="newPost"> New Post </button></a>
+					</div>
+				</div>
 				<% threads.forEach(function(threads){ %>
 				<div class="landingItem">
-					<p><a href="/forums/<%= name%>/<%= threads.thread_name%>"><%= threads.thread_name; %></a></p>
+					<p><a href="./<%= name%>/<%= threads.thread_name%>"><%= threads.thread_name; %></a></p>
 				</div>
 				<% }); %>
 			</div>

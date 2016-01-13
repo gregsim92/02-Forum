@@ -2,12 +2,22 @@
 		background-color: #efefef;
 	}
 	body {
+        min-width: 800px;
 		width: 100%;
 		background-color: #5784ae;
 	}
+
+    nav {
+        min-width: 800px;
+    }
+
 	body > div > div > h1 {
 		margin-top: 0px;
 	}
+
+    body > div > div > div > div > div > div > p {
+        overflow: hidden;
+    }
 
 	.landing {
 		background-color: #eef3f0;

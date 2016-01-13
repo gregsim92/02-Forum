@@ -12,7 +12,10 @@
 					<% subforums.forEach(function(subforums){ %>
 					<%if (subforums.category == 1) {%>
 					<div class="landingItem">
-						<p><a href="/forums/<%= subforums.sub_name%>"><%= subforums.sub_name; %></a></p>
+						<div class="row">
+							<div class="col-xs-8"><h3><a href="/forums/<%= subforums.sub_name%>"><%= subforums.sub_name; %></a></h3><p><%= subforums.sub_desc %></p>
+							</div>
+						</div>
 					</div>
 					<% }}); %>
 				</div>
@@ -21,7 +24,10 @@
 					<% subforums.forEach(function(subforums){ %>
 					<%if (subforums.category == 2) {%>
 					<div class="landingItem">
-						<p><a href="/forums/<%=subforums.sub_name%>"><%= subforums.sub_name; %></a></p>
+						<div class="row">
+							<div class="col-xs-8"><h3><a href="/forums/<%= subforums.sub_name%>"><%= subforums.sub_name; %></a></h3><p><%= subforums.sub_desc %></p>
+							</div>
+						</div>
 					</div>
 					<% }}); %>
 				</div>
@@ -30,7 +36,10 @@
 					<% subforums.forEach(function(subforums){ %>
 					<%if (subforums.category == 3) {%>
 					<div class="landingItem">
-						<p><a href="/forums/<%=subforums.sub_name%>"><%= subforums.sub_name; %></a></p>
+						<div class="row">
+							<div class="col-xs-8"><h3><a href="/forums/<%= subforums.sub_name%>"><%= subforums.sub_name; %></a></h3><p><%= subforums.sub_desc %></p>
+							</div>
+						</div>
 					</div>
 					<% }}); %>
 				</div>
@@ -39,7 +48,10 @@
 					<% subforums.forEach(function(subforums){ %>
 					<%if (subforums.category == 4) {%>
 					<div class="landingItem">
-						<p><a href="/forums/<%=subforums.sub_name%>"><%= subforums.sub_name; %></a></p>
+						<div class="row">
+							<div class="col-xs-8"><h3><a href="/forums/<%= subforums.sub_name%>"><%= subforums.sub_name; %></a></h3><p><%= subforums.sub_desc %></p>
+							</div>
+						</div>
 					</div>
 					<% }}); %>
 				</div>
