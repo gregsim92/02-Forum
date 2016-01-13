@@ -10,9 +10,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req,res,next){
-	req.session();
 	res.render('./pages/login', {title:'Log In'});
 });
+
+router.post('/login', function(req,res,next){
+	//#TODO: check whether the user is valid, throw error for invalid user, redirect home for valid
+})
 
 
 router.get('/signup', function(req,res,next){
@@ -21,12 +24,20 @@ router.get('/signup', function(req,res,next){
 
 router.post('/signup', function(req,res,next){
 	console.log();
+	
+	//#TODO: need to check if requested username is available
+	//#TODO: confirm password, make sure pass field matches pass confirm field
+
 	knex('users').insert(
 		{username: req.body.username, 
 		password:req.body.password,
 	 	email:req.body.email,
 	 	is_mod: false})
 	.then(function(){
+		req.session.user = JSON.stringify({username: req.body.username, 
+							password:req.body.password,
+						 	email:req.body.email,
+						 	is_mod: false})
 		res.redirect('/');
 	})
 });

@@ -26,17 +26,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cookieSession({
   keys: [process.env.SESSION_KEY_1,
-         process.env.SESSION_KEY_2]
+         process.env.SESSION_KEY_2],
+  name: 'session'
 }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/forums', express.static(path.join(__dirname, 'public')));
-app.use('/users', express.static(path.join(__dirname, 'public')));
+// app.use('/forums', express.static(path.join(__dirname, 'public')));
+// app.use('/users', express.static(path.join(__dirname, 'public')));
 
 app.use(count);
 
 function count(req, res, next) {
-  req.session.count = req.session.count || 0;
-  var n = req.session.count++;
+  // req.session.user = JSON.parse(req.session.user)
+  res.locals.currentUser = req.session.user
+  console.log(req.session.user)
+  // var n = req.session.count++;
   // res.send('viewed ' + n + ' times\n');
 
   next();
