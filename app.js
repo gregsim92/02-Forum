@@ -3,6 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
@@ -17,13 +18,29 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-
+require('dotenv').load();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cookieSession({
+  keys: [process.env.SESSION_KEY_1,
+         process.env.SESSION_KEY_2]
+}));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/forums', express.static(path.join(__dirname, 'public')));
+app.use('/users', express.static(path.join(__dirname, 'public')));
+
+app.use(count);
+
+function count(req, res, next) {
+  req.session.count = req.session.count || 0;
+  var n = req.session.count++;
+  // res.send('viewed ' + n + ' times\n');
+
+  next();
+}
 
 app.use('/', routes);
 app.use('/forums', subforum);

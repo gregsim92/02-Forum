@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req,res,next){
+	req.session();
 	res.render('./pages/login', {title:'Log In'});
 });
 
