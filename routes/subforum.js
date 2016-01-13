@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:subforum/new', function(req,res,next) {
-	console.log("recieved");
+	res.render('./pages/create');
 });
 
 router.get('/:subforum', function(req,res,next){
