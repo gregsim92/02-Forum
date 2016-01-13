@@ -6,15 +6,17 @@
 	<body>
 		<% include ../partials/header %>
 		<div class="container-fluid">
-			<form id="loginForm">
-					<img id="loginBanner" src="http://img1.123freevectors.com/wp-content/uploads/symbol_banners_big/044_Free_Vector_Banners.png"><br>
-				<label>Username: </label> <br>
-				<input id="username" type="text" autofocus maxlength="18"> <br>
-				<label>Password: </label> <br>
-				<input id="password" type="password"> <br>
-				<br>
-				<input class="submit" type="submit">
-			</form>
+			<div class="landing">
+				<form method="POST" action="/login" id="loginForm">
+						<img id="loginBanner" src="http://img1.123freevectors.com/wp-content/uploads/symbol_banners_big/044_Free_Vector_Banners.png"><br>
+					<label>Username: </label> <br>
+					<input type="text" name="username" id="username" autofocus maxlength="18"> <br>
+					<label>Password: </label> <br>
+					<input type="password" name="password" id="password"> <br>
+					<br>
+					<input class="submit" value="Log in" type="submit">
+				</form>
+			</div>
 		</div>
 	</body>
 </html>
