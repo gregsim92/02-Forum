@@ -11,9 +11,9 @@ router.get('/:subforum/new', function(req,res,next) {
 });
 
 router.get('/:subforum', function(req,res,next){
-	knex('subforums').then(function(rows){
-  		res.render('./pages/sub', {subforums: rows, name: req.params.subforum});
-	})
+	knex('threads').then(function(threads){
+  		res.render('./pages/sub', {threads: threads, name: req.params.subforum});
+	});
 });
 
 router.get('/:subforum/:thread', function(req,res,next){

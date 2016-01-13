@@ -11,8 +11,11 @@
 					<h1>Community Announcements</h1>
 					<% subforums.forEach(function(subforums){ %>
 					<%if (subforums.category == 1) {%>
-					<div>
-						<h5><a href="/forums/<%= subforums.sub_name%>"><%= subforums.sub_name; %></a></h5>
+					<div class="landingItem">
+						<div class="row">
+							<div class="col-xs-8"><h3><a href="/forums/<%= subforums.sub_name%>"><%= subforums.sub_name; %></a></h3><p><%= subforums.sub_desc %></p>
+							</div>
+						</div>
 					</div>
 					<% }}); %>
 				</div>
@@ -20,8 +23,11 @@
 					<h1>General</h1>
 					<% subforums.forEach(function(subforums){ %>
 					<%if (subforums.category == 2) {%>
-					<div>
-						<h5><a href="/forums/<%=subforums.sub_name%>"><%= subforums.sub_name; %></a></h5>
+					<div class="landingItem">
+						<div class="row">
+							<div class="col-xs-8"><h3><a href="/forums/<%= subforums.sub_name%>"><%= subforums.sub_name; %></a></h3><p><%= subforums.sub_desc %></p>
+							</div>
+						</div>
 					</div>
 					<% }}); %>
 				</div>
@@ -29,8 +35,11 @@
 					<h1>Gaming</h1>
 					<% subforums.forEach(function(subforums){ %>
 					<%if (subforums.category == 3) {%>
-					<div>
-						<h5><a href="/forums/<%=subforums.sub_name%>"><%= subforums.sub_name; %></a></h5>
+					<div class="landingItem">
+						<div class="row">
+							<div class="col-xs-8"><h3><a href="/forums/<%= subforums.sub_name%>"><%= subforums.sub_name; %></a></h3><p><%= subforums.sub_desc %></p>
+							</div>
+						</div>
 					</div>
 					<% }}); %>
 				</div>
@@ -38,8 +47,11 @@
 					<h1>Administrative</h1>
 					<% subforums.forEach(function(subforums){ %>
 					<%if (subforums.category == 4) {%>
-					<div>
-						<h5><a href="/forums/<%=subforums.sub_name%>"><%= subforums.sub_name; %></a></h5>
+					<div class="landingItem">
+						<div class="row">
+							<div class="col-xs-8"><h3><a href="/forums/<%= subforums.sub_name%>"><%= subforums.sub_name; %></a></h3><p><%= subforums.sub_desc %></p>
+							</div>
+						</div>
 					</div>
 					<% }}); %>
 				</div>

@@ -1,61 +1,92 @@
-	header {
-		background-color: #efefef;
-	}
-	body {
-		width: 100%;
-		background-color: #5784ae;
-	}
-	body > div > div > h1 {
-		margin-top: 0px;
-	}
-	.landing {
-		background-color: #eef3f0;
-		border-radius: 5px;
-		padding: 5px;
-    }
-    #signupForm {
-    	height: 400px;
-    	font-size: 1.5rem;
-    	width: 60%;
-    	margin-left: 20%;
-    	background-color: #eef3f0;
-		border-radius: 5px;
-		padding: 10px;
-    }
+html {
+    font-family:Helvetica;
+	min-width: 800px;
+}
 
-    #signupForm > label {
-    	margin-top: 20px;
-    	margin-bottom: 5px;
-    	font-size: 18px;
-    }
+header {
+	background-color: #efefef;
+}
+body {
+	width: 100%;
+	background-color: #5784ae;
+}
 
-    form > input {
-    	width: 100%;
-    }
-    .submit {
-    	width: 30%;
-    	height: 45px;
-    	margin-left: 35%;
-    	margin-right: auto;
-    	background-color: #65bb45;
-    	border: 1px solid #4b8c33;
-    	border-radius: 5px;
-    	color: white
-    }
+nav {
+}
 
-    #loginForm {
-        height: 400px;
-        font-size: 1.5rem;
-        width: 60%;
-        margin-left: 20%;
-        background-color: #eef3f0;
-        border-radius: 5px;
-        padding: 10px;
-    }
+body > div > div > h1 {
+	margin-top: 0px;
+}
 
-    #loginBanner {
-        margin-left: 10%;
-        height: 200px;
-        width: 80%;
-        text-align: center;
-    }
+.landing {
+	background-color: #eef3f0;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.landingItem {
+    max-height: 70px;
+    border: 1px solid black;
+    margin-top: 5px;
+    font-size: 2rem;
+    background-color: #d4d4d5; 
+    padding-left: 8px;
+}
+
+.landingItem > div > div > h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.landingItem > div > div > p {
+    overflow: hidden;
+    color: green;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+#signupForm {
+	height: 400px;
+	font-size: 1.5rem;
+	width: 60%;
+	margin-left: 20%;
+	background-color: #eef3f0;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+#signupForm > label {
+	margin-top: 20px;
+	margin-bottom: 5px;
+	font-size: 18px;
+}
+
+form > input {
+	width: 100%;
+}
+.submit {
+	width: 30%;
+	height: 45px;
+	margin-left: 35%;
+	margin-right: auto;
+	background-color: #65bb45;
+	border: 1px solid #4b8c33;
+	border-radius: 5px;
+	color: white
+}
+
+#loginForm {
+    height: 400px;
+    font-size: 1.5rem;
+    width: 60%;
+    margin-left: 20%;
+    background-color: #eef3f0;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#loginBanner {
+    margin-left: 10%;
+    height: 200px;
+    width: 80%;
+    text-align: center;
+}
