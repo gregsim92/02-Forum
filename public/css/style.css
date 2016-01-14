@@ -18,6 +18,7 @@ nav {
 	background-color: #eef3f0;
 	border-radius: 5px;
 	padding: 5px;
+	max-width: 1000px;
 }
 
 .landingItem {
@@ -95,4 +96,19 @@ form > input {
     height: 200px;
     width: 80%;
     text-align: center;
+}
+
+.postTitle {
+	width: 96%;
+	max-width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+.postWindow {
+	width: 96%;
+	max-width: 96%;
+	max-height: 300px;
+	margin-left: 2%;
+	margin-right: 2%;
 }
