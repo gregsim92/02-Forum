@@ -27,26 +27,26 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cookieSession({
   name: 'session',
-  keys:['aaaaa']
-  // keys: [process.env.SESSION_KEY_1,
-  //        process.env.SESSION_KEY_2]
+  keys: [process.env.SESSION_KEY_1,
+         process.env.SESSION_KEY_2]
 }));
 
 
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use('/forums', express.static(path.join(__dirname, 'public')));
-// app.use('/users', express.static(path.join(__dirname, 'public')));
+
+
 
 app.use(currentUser);
 
 function currentUser(req, res, next) {
+  req.session.notCrazy = "woo"
   
-  // if (typeof req.session.user == 'string'){
-  //   req.session.user = JSON.parse(req.session.user);
-  // }
+  if (typeof req.session.user == 'string'){
+    req.session.user = JSON.parse(req.session.user);
+  }
   res.locals.currentUser = req.session.user;
   console.log('middleware');
-  console.log(req.session);
+  console.log(req.session.user);
   // var n = req.session.count++;
   // res.send('viewed ' + n + ' times\n');
 

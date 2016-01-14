@@ -5,6 +5,7 @@ var bcrypt = require('bcrypt');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+	console.log("root: ", req.session);
   knex('subforums').then(function(rows){
   	console.log(res.locals);
   	res.render('./pages/index', {subforums: rows});
@@ -14,7 +15,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/signup', function(req,res,next){
-	console.log(req.session);
+	// console.log(req.session);
 	if (req.session.err) {
 		var errorMessage = req.session.err
 	} else {
@@ -43,16 +44,23 @@ router.post('/signup', function(req,res,next){
 					console.log("id: %s", id)
 					console.log("======================")
 
-					req.session.mySpecialUser = req.body.username;
-					//{username: req.body.username, 
-										// password:req.body.password,
-									 // 	email:req.body.email,
-									 // 	is_mod: false};
+					req.session.user = JSON.stringify({
+										username: req.body.username, 
+										password:req.body.password,
+									 	email:req.body.email,
+									 	is_mod: false});
 					req.session.err = "";
 					console.log(req.session);
-			   });
+					console.log('=====')
+					console.log(req.session.user);
+					console.log('=====')
 
-				res.redirect('/');
+			   });
+				console.log(req.session)
+				knex('subforums').then(function(rows){
+				  	console.log(res.locals);
+				  	res.redirect('/');
+				  })
 			} else if (user){
 				console.log(user);
 				res.status(409);
