@@ -7,8 +7,15 @@
 		<% include ../partials/header %>
 		<div class="container-fluid">
 			<div class="landing">
-				<h1></h1>
-				<p>Welcome to</p>
+				
+				<% threads.forEach(function(threads){ %> 
+					<% if (threads.thread_id == name) { %>
+						<div class="landingItem">
+							<p>
+								<%= threads.post_html; %>
+							</p>
+						</div>
+				<% }}); %>
 			</div>
 		</div>
 	</body>
