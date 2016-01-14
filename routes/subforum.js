@@ -7,17 +7,23 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:subforum/new', function(req,res,next) {
-	console.log("recieved");
+	res.render('./pages/create');
 });
 
 router.get('/:subforum', function(req,res,next){
 	knex('threads').then(function(threads){
-  		res.render('./pages/sub', {threads: threads, name: req.params.subforum});
+  		res.render('./pages/sub', {threads: threads, sub_id: req.params.subforum});
 	});
 });
 
+router.post('/:subforum/:thread', function(req,res,next) {
+	//make me
+});
+
 router.get('/:subforum/:thread', function(req,res,next){
-	res.render('./pages/thread');
+	knex('posts').then(function(threads){
+		res.render('./pages/thread.ejs', {threads: threads, name: req.params.thread});
+	});
 });
 
 module.exports = router;

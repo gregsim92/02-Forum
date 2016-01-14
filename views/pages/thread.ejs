@@ -7,8 +7,25 @@
 		<% include ../partials/header %>
 		<div class="container-fluid">
 			<div class="landing">
-				<h1></h1>
-				<p>Welcome to</p>
+				
+				<% threads.forEach(function(threads){ %> 
+					<% if (threads.thread_id == name) { %>
+						<div class="landingItem">
+							<p>
+								<%= threads.post_html; %>
+							</p>
+						</div>
+				<% }}); %>
+				<div class="replyContainer">
+					<form method="POST" action="<%= name%>/new">
+						<label name="reply">
+							<h6>New Reply:</h6>
+						</label>
+						<textarea type="type" name="reply" class="replyWindow" required rows="4"></textarea>
+						<br>
+						<input type="submit" class="submit"value="Post New Reply">
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

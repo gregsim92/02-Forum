@@ -9,17 +9,19 @@
 			<div class="landing">
 				<div class="navbar navbar-default">
 					<div>
-						<h2 class="navbar-header"><%= name%></h2>
+						<h2 class="navbar-header"> Welcome </h2>
 					</div>
 					<div class="nav navbar-nav navbar-right">
-						<a href="./<%= name%>/new"><button class="newPost"> New Post </button></a>
+						<a href="./<%= sub_id%>/new"><button class="newPost"> New Post </button></a>
 					</div>
 				</div>
-				<% threads.forEach(function(threads){ %>
-				<div class="landingItem">
-					<p><a href="./<%= name%>/<%= threads.thread_name%>"><%= threads.thread_name; %></a></p>
-				</div>
-				<% }); %>
+				<% console.log(sub_id) %>
+				<% threads.forEach(function(threads){ %> 
+					<% if (threads.sub_id == sub_id) { %>
+						<div class="landingItem">
+							<p><a href="./<%= sub_id%>/<%= threads.id%>"><%= threads.thread_name; %></a></p>
+						</div>
+				<% }}); %>
 			</div>
 		</div>
 	</body>
