@@ -16,7 +16,9 @@ router.get('/:subforum', function(req,res,next){
 	});
 });
 
-router.post('/:')
+router.post('/:subforum/:thread', function(req,res,next) {
+	//make me
+});
 
 router.get('/:subforum/:thread', function(req,res,next){
 	knex('posts').then(function(threads){
