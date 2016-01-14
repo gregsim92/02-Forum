@@ -42,7 +42,7 @@ app.use(function (req,res,next) {
   if(req.session.passport.user) {
     res.locals.user = req.session.passport.user
   } else {
-    res.locals.user = {username: 'anonymous'}
+    res.locals.user = null
   }
     next();
 })
