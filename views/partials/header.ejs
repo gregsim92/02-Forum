@@ -8,9 +8,13 @@
         </div>
 
         <ul class="nav navbar-nav navbar-right">
-
-            <li><a href="/signup">Sign up</a></li>
-            <li><a href="/login">Log in</a></li>
+            <% if (currentUser){ %>
+                <li><a href="/users/<%= currentUser.username%>"> Welcome, <%= currentUser.username%></a></li>
+                <li><a href="/logout"> Log Out</a></li>
+                <% } else { %>
+                <li><a href="/signup">Sign up</a></li>
+                <li><a href="/login">Log in</a></li>
+                <% } %>
         </ul>
     </div>
 </nav>

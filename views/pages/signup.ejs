@@ -6,21 +6,47 @@
 	<body>
 		<% include ../partials/header %>
 		<div class="container-fluid">
+
+
+				<% if(err !== "") { %>
+				<%= err %>
+				<% }; %>
+
 			<form method="POST" action="/signup" id="signupForm">
 				<label>Username:</label><br>
-				<input type="text" name="username" id="username" autocomplete="off" autofocus maxlength="18">
+				<input type="text" name="username" id="username" autocomplete="off" autofocus maxlength="18" required>
 				<br>
 				<label>Password:</label><br>
-				<input type="password" name = "password" id="password" autocomplete="off" >
+				<input type="password" name = "password" id="password" autocomplete="off" required>
 				<br>
 				<label>Confirm Password:</label><br>
-				<input type="password" id="passwordConfirm" autocomplete="off">
+				<input type="password" id="passwordConfirm" autocomplete="off" required>
 				<br>
 				<label>E-mail:</label><br>
-				<input type="email" name= "email" id="email" autocomplete="off">
+				<input type="email" name= "email" id="email" autocomplete="off" required>
+
+
 				<br><br>
 				<input type="submit" value="Create" class="submit">
 			</form>
+
+
 		</div>
+		<script type="text/javascript">
+		window.onload = function(){
+			var form = document.getElementById("signupForm") 
+			form.addEventListener("submit", function(event){
+				var pass1 = document.querySelector('#password').value,
+					pass2 = document.querySelector('#passwordConfirm').value;
+
+				if (pass1 !== pass2){
+
+					form.reset();
+					event.preventDefault();
+
+				}
+			});
+		}
+		</script>
 	</body>
 </html>
