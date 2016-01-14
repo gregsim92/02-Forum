@@ -112,3 +112,18 @@ form > input {
 	margin-left: 2%;
 	margin-right: 2%;
 }
+
+.replyContainer {
+	background-color: grey;
+	margin-top: 10px;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+.replyWindow {
+	width: 90%;
+	max-width: 90%;
+	max-height: 300px;
+	margin-left: 5%;
+	margin-right: auto;
+}
