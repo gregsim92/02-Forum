@@ -2,10 +2,13 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var bodyParser = require('body-parser');
+var passport = require('passport');
+var SteamStrategy = require('passport-steam').Strategy;
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
-var bodyParser = require('body-parser');
-
+var knex = require('./db/knex');
+var temp, identifier
 
 var routes = require('./routes/index');
 var subforum = require('./routes/subforum');
@@ -33,29 +36,91 @@ app.use(cookieSession({
 
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize())
 
-
-
-app.use(currentUser);
-
-function currentUser(req, res, next) {
-  req.session.notCrazy = "woo"
-  
-  if (typeof req.session.user == 'string'){
-    req.session.user = JSON.parse(req.session.user);
+app.use(function (req,res,next) {
+  if(req.session.passport.user) {
+    res.locals.user = req.session.passport.user
+  } else {
+    res.locals.user = null
   }
-  res.locals.currentUser = req.session.user;
-  console.log('middleware');
-  console.log(req.session.user);
-  // var n = req.session.count++;
-  // res.send('viewed ' + n + ' times\n');
+    next();
+})
 
-  next();
-}
+passport.use(new SteamStrategy({
+    returnURL: 'http://localhost:3000/auth/steam/return',
+    realm: 'http://localhost:3000/',
+    apiKey: process.env.API_KEY
+  },
+  function(identifier, profile, done) {
+    // identifier = http://steamcommunity.com/openid/id/76561198056223748
+    var temp = identifier.split("/")
+    var identifier = parseInt(temp[temp.length-1])
+    var steadId = parseInt(profile._json.steamid)
+
+    console.log(identifier)
+    console.log('============')
+    console.log(profile._json.personaname)
+    console.log('============')
+
+    knex('users').where({steam_id: identifier}).then(function(users){
+      if (users.length > 0) {
+        done(null, users[0]);
+      } else {
+        //insert
+        console.log('xxxxxxxxxxxxxxx')
+        console.log(profile)
+        knex('users').insert({
+          username: profile._json.personaname,
+          steam_id: steadId,
+          pic: profile._json.avatarfull
+        }).then(function(){
+          return done(null, profile);
+        })
+        //then return
+      }
+    })
+    //check to see whether the user exists by looking in the database using the identifier variable
+    //if the user exists, set the user variable from the db
+    //if not, create a user in the db, then set the user variable after you've created it in the db
+    
+  }
+));
+
+app.get('/auth/steam',
+  passport.authenticate('steam'),
+  function(req, res) {
+    // The request will be redirected to Steam for authentication, so
+    // this function will not be called.
+  });
+
+app.get('/auth/steam/return',
+  passport.authenticate('steam', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 app.use('/', routes);
 app.use('/forums', subforum);
 app.use('/users', users);
+
+
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+    done(null, obj);
+});
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
