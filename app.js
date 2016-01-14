@@ -7,6 +7,8 @@ var passport = require('passport');
 var SteamStrategy = require('passport-steam').Strategy;
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
+var knex = require('./db/knex');
+var temp, identifier
 
 var routes = require('./routes/index');
 var subforum = require('./routes/subforum');
@@ -36,21 +38,44 @@ app.use(cookieSession({
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize())
 
+app.use(function (req,res,next) {
+  if(req.session.passport.user) {
+    res.locals.user = req.session.passport.user
+  } else {
+    res.locals.user = {username: 'anonymous'}
+  }
+    next();
+})
+
 passport.use(new SteamStrategy({
     returnURL: 'http://localhost:3000/auth/steam/return',
     realm: 'http://localhost:3000/',
     apiKey: process.env.API_KEY
   },
   function(identifier, profile, done) {
-    knex('users').where({steam_identifier: identifier}).then(function(users){
+    // identifier = http://steamcommunity.com/openid/id/76561198056223748
+    var temp = identifier.split("/")
+    var identifier = parseInt(temp[temp.length-1])
+    var steadId = parseInt(profile._json.steamid)
+
+    console.log(identifier)
+    console.log('============')
+    console.log(profile._json.personaname)
+    console.log('============')
+
+    knex('users').where({steam_id: identifier}).then(function(users){
       if (users.length > 0) {
-        done(err, users[0]);
+        done(null, users[0]);
       } else {
         //insert
+        console.log('xxxxxxxxxxxxxxx')
+        console.log(profile)
         knex('users').insert({
-          username: req.body.personaname,
-          steam_id: req.body.steamid,
-          pic: req.body.avatar, ''
+          username: profile._json.personaname,
+          steam_id: steadId,
+          pic: profile._json.avatarfull
+        }).then(function(){
+          return done(null, profile);
         })
         //then return
       }
@@ -58,26 +83,9 @@ passport.use(new SteamStrategy({
     //check to see whether the user exists by looking in the database using the identifier variable
     //if the user exists, set the user variable from the db
     //if not, create a user in the db, then set the user variable after you've created it in the db
-      return done(err, user);
     
   }
 ));
-
-// app.use(currentUser);
-
-// function currentUser(req, res, next) {
-//   req.session.notCrazy = "woo"
-  
-//   if (typeof req.session.user == 'string'){
-//     req.session.user = JSON.parse(req.session.user);
-//   }
-//   res.locals.currentUser = req.session.user;
-//   console.log('middleware');
-//   console.log(req.session.user);
-
-
-//   next();
-// }
 
 app.get('/auth/steam',
   passport.authenticate('steam'),
@@ -93,6 +101,11 @@ app.get('/auth/steam/return',
     res.redirect('/');
   });
 
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
 app.use('/', routes);
 app.use('/forums', subforum);
 app.use('/users', users);
@@ -103,8 +116,8 @@ passport.serializeUser(function(user, done) {
   done(null, user);
 });
 
-passport.deserializeUser(function(user, done) {
-    done(null, user);
+passport.deserializeUser(function(obj, done) {
+    done(null, obj);
 });
 
 

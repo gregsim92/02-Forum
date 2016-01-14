@@ -8,10 +8,12 @@
         </div>
 
         <ul class="nav navbar-nav navbar-right">
-            
-
-                <li><a href="/auth/steam">Log in</a></li>
-
+            <% if (user){ %>
+                    <li><a>Welcome, <%= user.username%>
+                    <li><a href="/logout"> Log Out</a></li>
+                <% } else { %>
+                    <li><a href="/login">Log in</a></li>
+                <% } %>
         </ul>
     </div>
 </nav>
