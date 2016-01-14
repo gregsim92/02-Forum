@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:subforum/new', function(req,res,next) {
-	res.render('./pages/create');
+	res.render('./pages/create', {sub_id: req.params.subforum});
 });
 
 router.post('/:subforum/new', function(req, res, next) {
@@ -18,7 +18,7 @@ router.post('/:subforum/new', function(req, res, next) {
 	 	thread_views:0
 	 })
 	.then(function(){
-		res.redirect('/:subforum');
+		res.redirect('/');
 	})
 });
 
@@ -35,8 +35,22 @@ router.get('/:subforum/:thread', function(req,res,next){
 	});
 });
 
-router.post('/:subforum/:thread', function(req,res,next) {
-	//NEW POST in THREAD. make me
+router.post('/:subforum/:thread/new', function(req,res,next) {
+	var s = req.params.subforum;
+	var t = req.params.thread;
+
+	console.log(req.body.reply);
+
+	knex('posts').insert(
+		{user_id: 4,
+	 	thread_id:req.params.thread,
+	 	post_html:req.body.reply
+	 })
+	.then(function(){
+
+		res.redirect('/forums/'+s+'/'+t);
+
+	})
 });
 
 module.exports = router;
