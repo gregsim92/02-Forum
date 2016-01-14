@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 
+
 var routes = require('./routes/index');
 var subforum = require('./routes/subforum');
 var users = require('./routes/users');
@@ -26,9 +27,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cookieSession({
   name: 'session',
-  keys: [process.env.SESSION_KEY_1,
-         process.env.SESSION_KEY_2]
+  keys:['aaaaa']
+  // keys: [process.env.SESSION_KEY_1,
+  //        process.env.SESSION_KEY_2]
 }));
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/forums', express.static(path.join(__dirname, 'public')));
 // app.use('/users', express.static(path.join(__dirname, 'public')));
@@ -37,11 +41,12 @@ app.use(currentUser);
 
 function currentUser(req, res, next) {
   
-  if (typeof req.session.user == 'string'){
-    req.session.user = JSON.parse(req.session.user);
-  }
+  // if (typeof req.session.user == 'string'){
+  //   req.session.user = JSON.parse(req.session.user);
+  // }
   res.locals.currentUser = req.session.user;
-  console.log(typeof req.session.user);
+  console.log('middleware');
+  console.log(req.session);
   // var n = req.session.count++;
   // res.send('viewed ' + n + ' times\n');
 
@@ -65,6 +70,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
+    console.log(err);
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,

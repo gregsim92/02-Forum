@@ -6,6 +6,7 @@ var bcrypt = require('bcrypt');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   knex('subforums').then(function(rows){
+  	console.log(res.locals);
   	res.render('./pages/index', {subforums: rows});
   })
 });
@@ -13,7 +14,14 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/signup', function(req,res,next){
-	res.render('./pages/signup', {title:'Sign Up', err: "Username already taken"});
+	console.log(req.session);
+	if (req.session.err) {
+		var errorMessage = req.session.err
+	} else {
+		var errorMessage = ""
+	};
+	// req.session.err = null;
+	res.render('./pages/signup', {title:'Sign Up', err: errorMessage});
 });
 
 router.post('/signup', function(req,res,next){
@@ -35,16 +43,21 @@ router.post('/signup', function(req,res,next){
 					console.log("id: %s", id)
 					console.log("======================")
 
-					req.session.user = JSON.stringify({username: req.body.username, 
-										password:req.body.password,
-									 	email:req.body.email,
-									 	is_mod: false})
+					req.session.mySpecialUser = req.body.username;
+					//{username: req.body.username, 
+										// password:req.body.password,
+									 // 	email:req.body.email,
+									 // 	is_mod: false};
+					req.session.err = "";
+					console.log(req.session);
 			   });
 
 				res.redirect('/');
 			} else if (user){
+				console.log(user);
 				res.status(409);
-				res.render('/signup');
+				req.session.err = "Username not available"
+				res.redirect('/signup');
 			}// if statement
 		})
 	
