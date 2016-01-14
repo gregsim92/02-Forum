@@ -11,27 +11,34 @@ router.get('/:subforum/new', function(req,res,next) {
 });
 
 router.post('/:subforum/new', function(req, res, next) {
+	var s = req.params.subforum;
+
 	knex('threads').insert(
-		{sub_id: req.params.subforum, 
+		{sub_id: s, 
 		thread_name:req.body.title,
 	 	thread_desc:req.body.post,
 	 	thread_views:0
 	 })
 	.then(function(){
-		res.redirect('/');
+		res.redirect('/forums/' + s);
 	})
 });
 
 router.get('/:subforum', function(req,res,next){
+	var s = req.params.subforum;
+
 	knex('threads').then(function(threads){
-  		res.render('./pages/sub', {threads: threads, sub_id: req.params.subforum});
+  		res.render('./pages/sub', {threads: threads, sub_id: s});
 	});
 });
 
 
 router.get('/:subforum/:thread', function(req,res,next){
-	knex('posts').then(function(threads){
-		res.render('./pages/thread.ejs', {threads: threads, name: req.params.thread});
+	var s = req.params.subforum;
+	var t = req.params.thread;
+
+	knex('posts').join('users', 'users.id', '=', 'posts.user_id').then(function(posts){
+		res.render('./pages/thread', {posts: posts, name: t});
 	});
 });
 
@@ -43,7 +50,8 @@ router.post('/:subforum/:thread/new', function(req,res,next) {
 
 	knex('posts').insert(
 		{user_id: 4,
-	 	thread_id:req.params.thread,
+	 	thread_id:t,
+	 	post_time: new Date(),
 	 	post_html:req.body.reply
 	 })
 	.then(function(){

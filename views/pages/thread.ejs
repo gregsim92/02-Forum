@@ -8,14 +8,28 @@
 		<div class="container-fluid">
 			<div class="landing">
 				
-				<% threads.forEach(function(threads){ %> 
-					<% if (threads.thread_id == name) { %>
-						<div class="landingItem">
-							<p>
-								<%= threads.post_html; %>
-							</p>
+				<% posts.forEach(function(posts){ %> 
+					<% if (posts.thread_id == name) { %>
+						<div class="postItem">
+								<div class="postUser">
+									<img src=<%= (posts.profilePicture || "https://www.petfinder.com/wp-content/uploads/2012/11/140272627-grooming-needs-senior-cat-632x475.jpg") %> class="profilePicture"> <br>
+									<%= posts.username || "unknown user" %>
+								</div>
+								<div class="postContents">
+									<div class="a">
+										<p> <%= (posts.post_time  || "No time found") %> </p>
+									</div>
+									<div class="b">
+										<p>
+											<%= posts.post_html; %>
+										</p>
+									</div>
+							</div>
 						</div>
 				<% }}); %>
+
+
+				<!-- REPLY HERE -->
 				<div class="replyContainer">
 					<form method="POST" action="<%= name %>/new">
 						<label>
