@@ -20,6 +20,7 @@
 					<% if (threads.sub_id == sub_id) { %>
 						<div class="landingItem">
 							<p><a href="./<%= sub_id%>/<%= threads.id%>"><%= threads.thread_name; %></a></p>
+							<h5><%= (threads.thread_desc || "No Description Available") %></h5>
 						</div>
 				<% }}); %>
 			</div>
