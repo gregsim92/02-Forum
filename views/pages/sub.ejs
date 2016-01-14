@@ -17,7 +17,7 @@
 				</div>
 				<% console.log(sub_id) %>
 				<% threads.forEach(function(threads){ %> 
-					<% if ("/" + threads.sub_id == sub_id) { %>
+					<% if (threads.sub_id == sub_id) { %>
 						<div class="landingItem">
 							<p><a href="./<%= sub_id%>/<%= threads.id%>"><%= threads.thread_name; %></a></p>
 						</div>
