@@ -4,9 +4,8 @@ exports.up = function(knex, Promise) {
   	table.increments(),
   	table.string('sub_name'),
   	table.string('category'),
-  	table.text('sub_desc'),
-  	table.integer('sub_views'),
-  	table.integer('sub_thread_count')
+  	table.text('sub_desc')
+
   });
 };
 
