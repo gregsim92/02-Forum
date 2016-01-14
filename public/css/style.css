@@ -1,5 +1,4 @@
 html {
-    font-family: "Comic Sans MS";
 	min-width: 800px;
 }
 
@@ -162,6 +161,8 @@ form > input {
 }
 
 .profilePicture {
+	margin-left: auto;
+	margin-left: auto;
 	width: 80px;
 	height: 80px;
 }
