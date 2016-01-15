@@ -47,7 +47,7 @@ router.post('/:subforum/:thread/new', function(req,res,next) {
 	var t = req.params.thread;
 
 
-	knex('users').where({'steam_id', req.session.passport.user.id}).then(function(user){
+	knex('users').where({'steam_id': req.session.passport.user.id}).then(function(user){
 		knex('posts').insert(
 			{user_id: user[0].id,
 		 	thread_id:t,
@@ -56,7 +56,6 @@ router.post('/:subforum/:thread/new', function(req,res,next) {
 		 })
 		.then(function(){
 			res.redirect('/forums/'+s+'/'+t);
-
 		})
 	})
 
