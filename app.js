@@ -22,7 +22,7 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-if(process.env.NODE_ENV){
+if(process.env.NODE_ENV == 'development'){
 
     require('dotenv').load();
   }
