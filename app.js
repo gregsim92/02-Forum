@@ -22,8 +22,10 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-require('dotenv').load();
+if(process.env.NODE_ENV){
 
+    require('dotenv').load();
+  }
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -49,12 +51,12 @@ app.use(function (req,res,next) {
 })
 
 passport.use(new SteamStrategy({
-    returnURL: 'http://localhost:3000/auth/steam/return',
-    realm: 'http://localhost:3000/',
+    returnURL: process.env.HOST + '/auth/steam/return',
+    realm: process.env.HOST,
     apiKey: process.env.API_KEY
   },
   function(identifier, profile, done) {
-    // identifier = http://steamcommunity.com/openid/id/76561198056223748
+
     var temp = identifier.split("/")
     var identifier = parseInt(temp[temp.length-1])
     var steadId = parseInt(profile._json.steamid)
