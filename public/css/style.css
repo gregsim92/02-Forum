@@ -50,20 +50,10 @@ nav {
 	height: 50px;
 }
 
-#signupForm {
-	height: 400px;
-	font-size: 1.5rem;
-	width: 60%;
-	margin-left: 20%;
-	background-color: #eef3f0;
-	border-radius: 5px;
-	padding: 10px;
-}
-
-#signupForm > label {
-	margin-top: 20px;
-	margin-bottom: 5px;
-	font-size: 18px;
+.newPost {
+	height: 26px;
+	margin-right: 25px;
+	margin-top: 21px; 
 }
 
 form > input {
@@ -131,6 +121,7 @@ form > input {
 
 .postUser {
 	padding: 5px;
+	overflow:hidden;
 	text-align: center;
 	float:left;
 	display: inline-block;
@@ -156,6 +147,8 @@ form > input {
 }
 
 .postContents > .b {
+	overflow:scroll;
+	word-wrap: break-word;
 	padding: 5px;
 	height: 85%;
 }
