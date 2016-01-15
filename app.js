@@ -59,7 +59,7 @@ passport.use(new SteamStrategy({
 
     var temp = identifier.split("/")
     var identifier = parseInt(temp[temp.length-1])
-    var steadId = parseInt(profile._json.steamid)
+    var steadId = profile._json.steamid
 
     console.log(identifier)
     console.log('============')
