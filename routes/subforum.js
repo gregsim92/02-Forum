@@ -38,6 +38,7 @@ router.get('/:subforum/:thread', function(req,res,next){
 	var t = req.params.thread;
 
 	knex('posts').join('users', 'users.steam_id', '=', 'posts.user_id').then(function(posts){
+		console.log(posts);
 		res.render('./pages/thread', {posts: posts, name: t});
 	});
 });
