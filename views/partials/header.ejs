@@ -3,13 +3,13 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="/">
                 <span class="glyphicon glyphicon-home"></span>
-                 Hella cool forums
+                 Cool Forums
             </a>
         </div>
 
         <ul class="nav navbar-nav navbar-right">
             <% if (user){ %>
-                    <li><a>Welcome, <%= user.username%>
+                    <li><a>Welcome, <%= user.personaname%>
                     <li><a href="/logout"> Log Out</a></li>
                 <% } else { %>
                     <li><a href="/login">Log in</a></li>
