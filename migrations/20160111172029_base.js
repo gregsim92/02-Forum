@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
    return knex.schema.createTable('users', function(table){
   	table.increments(),
   	table.string('username'),
-  	table.bigInteger('steam_id'),
+  	table.string('steam_id'),
   	table.string('pic')
   });
 };
