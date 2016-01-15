@@ -37,7 +37,15 @@ router.get('/:subforum/:thread', function(req,res,next){
 	var s = req.params.subforum;
 	var t = req.params.thread;
 
-	knex('posts').join('users', 'users.steam_id', '=', 'posts.user_id').then(function(posts){
+	knex('posts').join('users', 'users.steam_id', '=', 'posts.user_id').select(
+		'users.id',
+		'users.steam_id',
+		'posts.post_time',
+		'posts.thread_id',
+		'posts.post_html'
+		
+
+		).then(function(posts){
 		res.render('./pages/thread', {posts: posts, name: t});
 	});
 });
