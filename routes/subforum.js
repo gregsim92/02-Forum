@@ -46,11 +46,13 @@ router.post('/:subforum/:thread/new', function(req,res,next) {
 	var s = req.params.subforum;
 	var t = req.params.thread;
 
+
+
 		knex('posts').insert(
 			{user_id:  req.session.passport.user.id,
-		 	thread_id: t,
+		 	thread_id:t,
 		 	post_time: new Date(),
-		 	post_html: req.body.reply
+		 	post_html:req.body.reply
 		 })
 		.then(function(){
 			res.redirect('/forums/'+s+'/'+t);
