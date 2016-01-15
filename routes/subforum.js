@@ -47,10 +47,9 @@ router.post('/:subforum/:thread/new', function(req,res,next) {
 	var t = req.params.thread;
 
 
-	knex('users').where({'steam_id': req.session.passport.user.id}).then(function(user){
-		console.log(user);
+
 		knex('posts').insert(
-			{user_id: user.id,
+			{user_id:  req.session.passport.user.id,
 		 	thread_id:t,
 		 	post_time: new Date(),
 		 	post_html:req.body.reply
@@ -58,7 +57,6 @@ router.post('/:subforum/:thread/new', function(req,res,next) {
 		.then(function(){
 			res.redirect('/forums/'+s+'/'+t);
 		})
-	})
 
 });
 
