@@ -31,6 +31,7 @@
 
 				<!-- REPLY HERE -->
 				<div class="replyContainer">
+					<% if(user){ %>
 					<form method="POST" action="<%= name %>/new">
 						<label>
 							<h6>New Reply:</h6>
@@ -39,6 +40,9 @@
 						<br>
 						<input type="submit" class="submit"value="Post New Reply">
 					</form>
+					<% } else {%>
+					<h3>To post a comment, please log in!</h3>
+					<% }; %>
 				</div>
 			</div>
 		</div>
