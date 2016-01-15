@@ -131,6 +131,7 @@ form > input {
 
 .postUser {
 	padding: 5px;
+	overflow: hidden;
 	text-align: center;
 	float:left;
 	display: inline-block;
@@ -156,6 +157,8 @@ form > input {
 }
 
 .postContents > .b {
+	overflow: scroll;
+	word-wrap: break-word;
 	padding: 5px;
 	height: 85%;
 }
