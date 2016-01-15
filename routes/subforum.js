@@ -49,13 +49,12 @@ router.post('/:subforum/:thread/new', function(req,res,next) {
 	console.log(req.body.reply);
 
 	knex('posts').insert(
-		{user_id: 4,
+		{user_id: req.session.passport.user.id,
 	 	thread_id:t,
 	 	post_time: new Date(),
 	 	post_html:req.body.reply
 	 })
 	.then(function(){
-
 		res.redirect('/forums/'+s+'/'+t);
 
 	})

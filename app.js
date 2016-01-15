@@ -39,8 +39,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize())
 
 app.use(function (req,res,next) {
-  if(req.session.passport.user) {
+  if(req.session.passport) {
     res.locals.user = req.session.passport.user
+    console.log(req.session.passport.user)
   } else {
     res.locals.user = null
   }
