@@ -50,20 +50,10 @@ nav {
 	height: 50px;
 }
 
-#signupForm {
-	height: 400px;
-	font-size: 1.5rem;
-	width: 60%;
-	margin-left: 20%;
-	background-color: #eef3f0;
-	border-radius: 5px;
-	padding: 10px;
-}
-
-#signupForm > label {
-	margin-top: 20px;
-	margin-bottom: 5px;
-	font-size: 18px;
+.newPost {
+	height: 26px;
+	margin-right: 25px;
+	margin-top: 21px; 
 }
 
 form > input {
@@ -131,7 +121,11 @@ form > input {
 
 .postUser {
 	padding: 5px;
+<<<<<<< HEAD
 	overflow: hidden;
+=======
+	overflow:hidden;
+>>>>>>> b6e9c61a46dbebaae87a130d32152a67250af009
 	text-align: center;
 	float:left;
 	display: inline-block;
@@ -140,7 +134,7 @@ form > input {
 }
 
 .postContents {
-	width: 86%;
+	width: 85%;
 	float: right;
 	display: inline-block;
 	background-color: #eee;
@@ -157,7 +151,11 @@ form > input {
 }
 
 .postContents > .b {
+<<<<<<< HEAD
 	overflow: scroll;
+=======
+	overflow:scroll;
+>>>>>>> b6e9c61a46dbebaae87a130d32152a67250af009
 	word-wrap: break-word;
 	padding: 5px;
 	height: 85%;

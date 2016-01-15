@@ -11,6 +11,7 @@ router.get('/:subforum/new', function(req,res,next) {
 });
 
 router.post('/:subforum/new', function(req, res, next) {
+
 	var s = req.params.subforum;
 
 	knex('threads').insert(
@@ -26,7 +27,8 @@ router.post('/:subforum/new', function(req, res, next) {
 
 router.get('/:subforum', function(req,res,next){
 	var s = req.params.subforum;
-
+	var thisIs = req.session.passport.user.id;
+	
 	knex('threads').then(function(threads){
   		res.render('./pages/sub', {threads: threads, sub_id: s});
 	});
