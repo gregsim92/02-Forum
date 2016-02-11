@@ -52,8 +52,8 @@ app.use(function (req,res,next) {
 })
 
 passport.use(new SteamStrategy({
-    returnURL: process.env.HOST + '/auth/steam/return',
-    realm: process.env.HOST,
+    returnURL: 'https://salty-garden-1315.herokuapp.com/auth/steam/return',
+    realm: 'https://salty-garden-1315.herokuapp.com',
     apiKey: process.env.API_KEY
   },
   function(identifier, profile, done) {
