@@ -13,7 +13,10 @@
 						<div class="postItem">
 								<div class="postUser">
 									<img src=<%= (posts.pic || "https://www.petfinder.com/wp-content/uploads/2012/11/140272627-grooming-needs-senior-cat-632x475.jpg") %> class="profilePicture"> <br>
-									<%= posts.username || "unknown user" %>
+									<div class='postName'>
+										<%= posts.username || "unknown user" %>	
+									</div>
+									
 								</div>
 								<div class="postContents">
 									<div class="a">
