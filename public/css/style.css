@@ -111,7 +111,6 @@ form > input {
 
 .postItem {
     height: 250px;
-    width: 100px;
     border: 1px solid black;
     margin-bottom: 5px;
     font-size: 2rem;
@@ -122,6 +121,7 @@ form > input {
 
 .postUser {
 	padding: 5px;
+	width:125px;
 	text-align: center;
 	float:left;
 	display: inline-block;
