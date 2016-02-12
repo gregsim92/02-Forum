@@ -55,7 +55,7 @@ passport.use(new SteamStrategy({
   function(identifier, profile, done) {
 
     var temp = identifier.split("/")
-    var identifier = parseInt(temp[temp.length-1])
+    var identifier = temp[temp.length-1]
     var steamId = profile._json.steamid
 
     knex('users').where({steam_id: identifier}).then(function(users){
