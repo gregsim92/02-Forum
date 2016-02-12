@@ -22,10 +22,7 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-if(process.env.NODE_ENV == 'production'){
-
-    require('dotenv').load();
-  }
+require('dotenv').config();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -52,8 +49,8 @@ app.use(function (req,res,next) {
 })
 
 passport.use(new SteamStrategy({
-    returnURL: 'https://salty-garden-1315.herokuapp.com/auth/steam/return',
-    realm: 'https://salty-garden-1315.herokuapp.com',
+    returnURL: process.env.HOST + '/auth/steam/return',
+    realm: process.env.HOST,
     apiKey: process.env.API_KEY
   },
   function(identifier, profile, done) {
