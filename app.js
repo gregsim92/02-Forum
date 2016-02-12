@@ -56,7 +56,7 @@ passport.use(new SteamStrategy({
 
     var temp = identifier.split("/")
     var identifier = parseInt(temp[temp.length-1])
-    var steadId = profile._json.steamid
+    var steamId = profile._json.steamid
 
     knex('users').where({steam_id: identifier}).then(function(users){
       if (users.length > 0) {
@@ -67,7 +67,7 @@ passport.use(new SteamStrategy({
         console.log(profile)
         knex('users').insert({
           username: profile._json.personaname,
-          steam_id: steadId,
+          steam_id: steamId,
           pic: profile._json.avatarfull
         }).then(function(){
           return done(null, profile);
