@@ -27,7 +27,6 @@ router.post('/:subforum/new', function(req, res, next) {
 
 router.get('/:subforum', function(req,res,next){
 	var s = req.params.subforum;
-	var thisIs = req.session.passport.user.id;
 	
 	knex('threads').then(function(threads){
   		res.render('./pages/sub', {threads: threads, sub_id: s});
@@ -40,7 +39,6 @@ router.get('/:subforum/:thread', function(req,res,next){
 	var t = req.params.thread;
 
 	knex('posts').join('users', 'users.steam_id', '=', 'posts.user_id').then(function(posts){
-		console.log(posts);
 		res.render('./pages/thread', {posts: posts, name: t});
 	});
 });

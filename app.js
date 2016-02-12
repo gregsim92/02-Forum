@@ -63,8 +63,6 @@ passport.use(new SteamStrategy({
         done(null, users[0]);
       } else {
         //insert
-        console.log('xxxxxxxxxxxxxxx')
-        console.log(profile)
         knex('users').insert({
           username: profile._json.personaname,
           steam_id: steamId,
