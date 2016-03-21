@@ -22,7 +22,7 @@ app.set('port', port);
 var server = http.createServer(app);
 
 setInterval(function(req,res){
-  http.get("https://salty-garden-1315.herokuapp.com/");
+  https.get("https://salty-garden-1315.herokuapp.com/");
 },15000);
 
 /**
