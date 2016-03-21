@@ -21,6 +21,10 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+setInterval(function(req,res){
+  http.get("https://salty-garden-1315.herokuapp.com/");
+},15000);
+
 /**
  * Listen on provided port, on all network interfaces.
  */
